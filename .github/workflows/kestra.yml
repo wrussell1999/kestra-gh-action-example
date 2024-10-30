@@ -1,0 +1,36 @@
+name: Kestra CI/CD
+on: [push]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Kestra validate
+    steps:
+      - name: Validate all flows on server-side
+        uses: actions/kestra-validate-action@develop
+        with:
+          directory: ./kestra/flows
+          server: https://kestra.io/
+          apiToken: ${{ secrets.KESTRA_API_TOKEN }}
+
+  # If validation passed, deploy resources
+  deploy:
+    runs-on: ubuntu-latest
+    name: Kestra deploy
+    steps:
+      # We can only deploy to one namespace at once,
+      # so we have two different steps for our two namespaces product and engineering
+      - name: Deploy product flows
+        uses: actions/kestra-deploy-action@develop
+        with:
+          namespace: product
+          directory: ./kestra/flows/product
+          server: https://kestra.io/
+          apiToken: ${{ secrets.KESTRA_API_TOKEN }}
+
+      - name: Deploy engineering flows
+        uses: actions/kestra-deploy-action@develop
+        with:
+          namespace: engineering
+          directory: ./kestra/flows/engineering
+          server: https://kestra.io/
+          apiToken: ${{ secrets.KESTRA_API_TOKEN }}
