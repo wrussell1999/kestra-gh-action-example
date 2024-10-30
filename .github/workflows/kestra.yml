@@ -9,7 +9,7 @@ jobs:
         uses: actions/kestra-validate-action@develop
         with:
           directory: ./kestra/flows
-          server: https://kestra.io/
+          server: https://335a-38-242-180-137.ngrok-free.app
           apiToken: ${{ secrets.KESTRA_API_TOKEN }}
 
   # If validation passed, deploy resources
@@ -17,20 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Kestra deploy
     steps:
-      # We can only deploy to one namespace at once,
-      # so we have two different steps for our two namespaces product and engineering
-      - name: Deploy product flows
+      - name: Deploy flows
         uses: actions/kestra-deploy-action@develop
         with:
-          namespace: product
-          directory: ./kestra/flows/product
-          server: https://kestra.io/
+          namespace: company.team
+          directory: ./kestra/flows/company/team
+          server: https://335a-38-242-180-137.ngrok-free.app
           apiToken: ${{ secrets.KESTRA_API_TOKEN }}
 
-      - name: Deploy engineering flows
-        uses: actions/kestra-deploy-action@develop
-        with:
-          namespace: engineering
-          directory: ./kestra/flows/engineering
-          server: https://kestra.io/
-          apiToken: ${{ secrets.KESTRA_API_TOKEN }}
