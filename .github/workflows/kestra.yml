@@ -19,6 +19,6 @@ jobs:
       - name: Deploy flows
         uses: kestra-io/deploy-action@develop
         with:
-          namespace: company.team
+          namespace: company
           directory: ./kestra/flows/company/team
           server: https://0326-38-242-180-137.ngrok-free.app
