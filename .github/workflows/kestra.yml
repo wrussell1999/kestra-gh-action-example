@@ -6,7 +6,7 @@ jobs:
     name: Kestra validate
     steps:
       - name: Validate all flows on server-side
-        uses: kestra-io/validate-action@develop
+        uses: kestra-io/validate-action@master
         with:
           directory: ./kestra/flows
           resource: flow
@@ -18,7 +18,7 @@ jobs:
     name: Kestra deploy
     steps:
       - name: Deploy flows
-        uses: kestra-io/deploy-action@develop
+        uses: kestra-io/deploy-action@master
         with:
           namespace: example
           directory: ./kestra/flows
