@@ -8,7 +8,7 @@ jobs:
       - name: Validate all flows on server-side
         uses: kestra-io/validate-action@develop
         with:
-          directory: /kestra/flows/example
+          directory: ./kestra/flows
           resource: flow
           server: https://0326-38-242-180-137.ngrok-free.app
 
@@ -21,6 +21,6 @@ jobs:
         uses: kestra-io/deploy-action@develop
         with:
           namespace: example
-          directory: ./kestra/flows/example
+          directory: ./kestra/flows
           resource: flow
           server: https://0326-38-242-180-137.ngrok-free.app
