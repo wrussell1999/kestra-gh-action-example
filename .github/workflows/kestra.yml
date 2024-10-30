@@ -1,5 +1,11 @@
 name: Kestra CI/CD
-on: [push]
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
   validate:
     runs-on: ubuntu-latest
