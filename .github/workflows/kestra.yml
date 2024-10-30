@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Kestra validate
     steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v4
+
       - name: Validate all flows on server-side
         uses: kestra-io/validate-action@master
         with:
@@ -17,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Kestra deploy
     steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v4
+      
       - name: Deploy flows
         uses: kestra-io/deploy-action@master
         with:
