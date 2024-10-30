@@ -9,7 +9,7 @@ jobs:
         uses: actions/kestra-validate-action@develop
         with:
           directory: ./kestra/flows
-          server: https://335a-38-242-180-137.ngrok-free.app
+          server: https://b9f3-38-242-180-137.ngrok-free.app
           apiToken: ${{ secrets.KESTRA_API_TOKEN }}
 
   # If validation passed, deploy resources
@@ -22,6 +22,6 @@ jobs:
         with:
           namespace: company.team
           directory: ./kestra/flows/company/team
-          server: https://335a-38-242-180-137.ngrok-free.app
+          server: https://b9f3-38-242-180-137.ngrok-free.app
           apiToken: ${{ secrets.KESTRA_API_TOKEN }}
 
