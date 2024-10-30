@@ -6,7 +6,7 @@ jobs:
     name: Kestra validate
     steps:
       - name: Validate all flows on server-side
-        uses: actions/kestra-validate-action@develop
+        uses: kestra-io/validate-action@develop
         with:
           directory: ./kestra/flows
           server: https://b9f3-38-242-180-137.ngrok-free.app
@@ -18,7 +18,7 @@ jobs:
     name: Kestra deploy
     steps:
       - name: Deploy flows
-        uses: actions/kestra-deploy-action@develop
+        uses: kestra-io/deploy-action@develop
         with:
           namespace: company.team
           directory: ./kestra/flows/company/team
